@@ -1,14 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import pinia from './store';
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 
-import './style.css'
+const app = createApp(App);
 
-import './demos/ipc'
-// If you want use Node.js, the`nodeIntegration` needs to be enabled in the Main process.
-// import './demos/node'
+app.use(router);
+app.use(pinia);
+app.use(Antd);
 
-createApp(App)
-  .mount('#app')
-  .$nextTick(() => {
-    postMessage({ payload: 'removeLoading' }, '*')
-  })
+app.mount('#app');
